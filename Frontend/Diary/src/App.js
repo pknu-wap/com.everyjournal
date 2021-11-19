@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Header from './Header';
-import Main from './Main';
+import Calendar from './Calendar';
 
 function App() {
   const date = new Date();
@@ -13,10 +12,7 @@ function App() {
 
   return (
     <div className="App">
-      <div className="calender">
-        <Header year={year} year변경={year변경} month={month} month변경={month변경} /> 
-        <Main year={year}  month={month} totalDate={totalDate} totalDate변경={totalDate변경} />
-      </div>
+      <Calendar year={year} year변경={year변경} month={month} month변경={month변경} totalDate={totalDate} totalDate변경={totalDate변경}/>
     </div>  
   );
 }
