@@ -40,9 +40,10 @@
     border-right: 1px solid #333333;
 	}	
 .date{
+    box-sizing: border-box;
     width: calc(100% / 7);
     text-align: right;
-    padding: 15px;
+    padding: 0px;
     border-left: 1px solid #333333;
     border-bottom: 1px solid #333333;
 	}
