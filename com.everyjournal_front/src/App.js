@@ -23,7 +23,7 @@ class App extends Component {
           <TopMenuBar
             onChangeMode={(mod)=>{
               if(mod==='sign out') this.setState({id:null, mode:'home'});
-              this.setState({mode:mod});
+              else this.setState({mode:mod});
             }}
             id={this.state.id}
           />
