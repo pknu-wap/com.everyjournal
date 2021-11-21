@@ -9,7 +9,7 @@ function Calendar(props){
   	let [year, year변경] = useState(date_init.getFullYear());
   	let [totalDate, totalDate변경] = useState([]);
 
-	let [diary, setDiary] = useState(true);
+	let [diary, setDiary] = useState(false);
 	
 	function changeDate(m){ //지난 달 의 일부와 다음 달의 일부를 보여주는 함수
 		const prevLast = new Date(year,m,0); //지난달 마지막 날의 Date객체

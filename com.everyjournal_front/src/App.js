@@ -16,41 +16,24 @@ class App extends Component {
     }
   }
 
-  getContent() {
-    switch(this.state.mode) {
-      case 'home':
-        return(
-          <div>
-            HOME
-          </div>
-        );
-        break;
-      case 'sign in':
-        ;
-        break;
-      case 'sign up':
-        ;
-        break;
-      default:
-        ;
-        break;
-    }
-  }
-
   render() {
     return (
       <div className="App">
         <header className="App-header">
-          <TopMenuBar/>
+          <TopMenuBar
+            onChangeMode={(mod)=>this.setState({mode:mod})}
+          />
         </header>
         <section>
           <header>
             <div>
             </div>
-            <Calendar />
+            <Calendar/>
           </header>
           <article>
-            {this.getContent()}
+            <Content
+              mode={this.state.mode}
+            />
           </article>
         </section>
         <footer>
