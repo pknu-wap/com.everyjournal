@@ -15,6 +15,7 @@ class SignIn extends Component {
                     }).then((res)=>{
                         if(res.status===200) { // 로그인 성공
                             console.log(res.status,res.data);
+                            this.props.onSignIn(res.data.id);
                         } else if(res.status===412) { // 로그인 실패
                             console.log(res.status,res.data);
                         }

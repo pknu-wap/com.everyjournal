@@ -21,7 +21,11 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <TopMenuBar
-            onChangeMode={(mod)=>this.setState({mode:mod})}
+            onChangeMode={(mod)=>{
+              if(mod==='sign out') this.setState({id:null, mode:'home'});
+              this.setState({mode:mod});
+            }}
+            id={this.state.id}
           />
         </header>
         <section>
@@ -33,6 +37,8 @@ class App extends Component {
           <article>
             <Content
               mode={this.state.mode}
+              onSignIn={(_id)=>{this.setState({id:_id, mode:'home'})}}
+              onSignUp={(_id)=>{this.setState({id:null, mode:'home'})}}
             />
           </article>
         </section>

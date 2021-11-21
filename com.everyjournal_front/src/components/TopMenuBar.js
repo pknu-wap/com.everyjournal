@@ -14,6 +14,7 @@ function TopMenuBtn (props) {
 
 class TopMenuBar extends Component {
   render() {
+    if(this.props.id===null){
     return (
       <div className="TopMenuBar">
           <TopMenuBtn 
@@ -30,6 +31,20 @@ class TopMenuBar extends Component {
           />
       </div>
     );
+    } else {
+      return (
+        <div className="TopMenuBar">
+            <TopMenuBtn 
+              name="Home"
+              onClick={()=>{this.props.onChangeMode('home');}}
+            />
+            <TopMenuBtn 
+              name="Sign out"
+              onClick={()=>{this.props.onChangeMode('sign out');}}
+            />
+        </div>
+      );
+    }
   }
 }
 

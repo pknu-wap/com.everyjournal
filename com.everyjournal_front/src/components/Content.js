@@ -9,7 +9,9 @@ class Content extends Component {
         switch(this.props.mode) {
           case 'sign in':
             return(
-                <SignIn/>
+                <SignIn 
+                onSignIn={this.props.onSignIn}
+                />
               );
           case 'sign up':
             return(
