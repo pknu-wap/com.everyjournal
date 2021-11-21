@@ -3,10 +3,13 @@ import React, { useEffect, useState }  from 'react';
 import './Calendar.css'
 
 function Calendar(props){
+	// props.diary의 true false에 따라 달력을 표시할지 안할지 결정.
 	const date_init = new Date();
 	let [month, month변경] =  useState(date_init.getMonth()); //date.getMonth() : 1월(0) ~ 12월(11)
   	let [year, year변경] = useState(date_init.getFullYear());
   	let [totalDate, totalDate변경] = useState([]);
+
+	let [diary, setDiary] = useState(true);
 	
 	function changeDate(m){ //지난 달 의 일부와 다음 달의 일부를 보여주는 함수
 		const prevLast = new Date(year,m,0); //지난달 마지막 날의 Date객체
@@ -57,9 +60,12 @@ function Calendar(props){
 			return 'nottoday';
 		
 	}
-
+	if(diary===true){
     return(
 			<div className="top">
+				<p>
+				<input type="button" value="Diary" onClick={()=>{setDiary(!diary)}}/>
+				</p>
 				<div className="calender">
 					<div className="container">
 						<div className="year-month">
@@ -116,6 +122,14 @@ function Calendar(props){
 				</div>
 			</div>
     );
+	} else {
+		return (
+		<div className="Top">
+		<p>
+		<input type="button" value="Diary" onClick={()=>setDiary(!diary)}/>
+		</p>
+		</div>);
+	}
   }
 
   export default Calendar

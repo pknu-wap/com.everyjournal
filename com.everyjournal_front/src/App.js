@@ -11,7 +11,6 @@ class App extends Component {
     this.state = {
       //home, sign in, sign up, 
       mode: 'home',
-      diary: true,
       id: null,
       nickname: null,
     }
@@ -47,16 +46,8 @@ class App extends Component {
         <section>
           <header>
             <div>
-              <p>
-              <input type="button" value="Diary" onClick={()=>{this.setState({diary:!(this.state.diary)})}}/>
-              </p>
             </div>
-            { 
-            (()=>{
-              if(this.state.diary===true)
-                return (<Calendar/>);
-            })()
-            }
+            <Calendar />
           </header>
           <article>
             {this.getContent()}
