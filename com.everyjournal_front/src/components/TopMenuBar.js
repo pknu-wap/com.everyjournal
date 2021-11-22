@@ -15,7 +15,7 @@ function TopMenuBtn (props) {
 class TopMenuBar extends Component {
   render() {
     if(this.props.id===null){
-    return (
+    return ( // 비로그인
       <div className="TopMenuBar">
           <TopMenuBtn 
             name="Home"
@@ -32,7 +32,7 @@ class TopMenuBar extends Component {
       </div>
     );
     } else {
-      return (
+      return ( // 로그인
         <div className="TopMenuBar">
             <TopMenuBtn 
               name="Home"
