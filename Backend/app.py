@@ -13,7 +13,7 @@ def start():
     if "uno" in session:
         no = session["uno"]
     return render_template('main.html', value=no)
-
+# 회원가입
 @app.route("/api/auth/join", methods=['POST'])
 def join():
     new_user = request.json
@@ -40,7 +40,7 @@ def join():
         db.commit()
         data = {"id" : id}
         return jsonify(data), 200
-
+# 회원탈퇴
 @app.route("/api/auth/withdraw", methods=['POST'])
 def withdraw():
     drop_user = request.json
@@ -66,6 +66,33 @@ def withdraw():
     else:
         data = {"result":"disaccord"}
         return jsonify(data)
+
+# login logout
+ 
+@app.route('/api/auth/login', methods = ['POST'])
+def login():
+    user_imf = request.json
+    id = user_imf['id']
+    pw = user_imf['pw']
+    
+    sql_1="SELECT mno, id, pw, ninkname FROM Member WHERE id=%s "
+    cur.execute(sql_1, (id))   
+    rs1 = cur.fetchall()
+
+    try:
+        for i in rs1:
+         if id == i[1] and pw == i[2]:
+            session['id'] = id
+            return jsonify({"result" : id}), 200
+         else:
+            return jsonify({"result" : "ERROR"}), 412
+    except:
+        return jsonify({"result" : "ERROR"}), 412
+
+@app.route('/api/auth/logout', methods = ['GET'])
+def logout():
+    session.clear()
+    return jsonify({"result" : "logout"}), 200   
 
 if __name__ == "__main__":
     app.debug = True
