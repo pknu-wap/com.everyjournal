@@ -53,7 +53,7 @@ function Main(props){
 	}
 
     return(
-			<>
+			<div className="main-container">
 				<div className="days">
 					<div className="day">일</div>
 					<div className="day">월</div>
@@ -75,7 +75,7 @@ function Main(props){
 						})
 					}
 				</div>
-			</>	
+			</div>	
     );
 }
 
