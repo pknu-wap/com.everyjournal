@@ -22,7 +22,7 @@ class SignIn extends Component {
                     }).catch((err)=>{
                         console.log(err);
                     })
-            }}
+            }.bind(this)}
             >
                 <p>
                     <input type="text" name="id" placeholder="ID"></input>

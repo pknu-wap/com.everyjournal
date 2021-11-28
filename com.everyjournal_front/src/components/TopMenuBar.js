@@ -40,7 +40,16 @@ class TopMenuBar extends Component {
             />
             <TopMenuBtn 
               name="Sign out"
-              onClick={()=>{this.props.onChangeMode('sign out');}}
+              onClick={()=>{
+                axios.get('api/auth/logout')
+                .then((res)=>{
+                  if(res.status===200){
+                    this.props.onChangeMode('sign out');
+                  } else {
+                    this.props.onChangeMode('error');
+                  }
+                });
+                }}
             />
         </div>
       );

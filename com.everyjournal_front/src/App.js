@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      //home, sign in, sign up, 
+      //home, sign in, sign up, error
       mode: 'home',
       id: null,
       nickname: null,
