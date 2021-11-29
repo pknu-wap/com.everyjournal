@@ -11,9 +11,16 @@ class App extends Component {
     this.state = {
       //home, sign in, sign up, error
       mode: 'home',
-      id: null,
-      nickname: null,
+      id: 'test', // 'test' to test
+      nickname: 'test',
     }
+    this.changeMode = this.changeMod.bind(this);
+  }
+
+  changeMod(mod) {
+    if(mod==='sign out') this.setState({id:null, nickname:null, mode:'home'});
+    else this.setState({mode:mod});
+    return;
   }
 
   render() {
@@ -21,10 +28,7 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <TopMenuBar
-            onChangeMode={(mod)=>{
-              if(mod==='sign out') this.setState({id:null, mode:'home'});
-              else this.setState({mode:mod});
-            }}
+            onChangeMode={this.changeMode}
             id={this.state.id}
           />
         </header>
@@ -37,8 +41,10 @@ class App extends Component {
           <article>
             <Content
               mode={this.state.mode}
-              onSignIn={(_id)=>{this.setState({id:_id, mode:'home'})}}
-              onSignUp={(_id)=>{this.setState({id:null, mode:'home'})}}
+              onSignIn={(_id, _nick)=>{this.setState({id:_id, nickname:_nick, mode:'home'})}}
+              onSignUp={(_id)=>{this.setState({id:null, nickname:null, mode:'home'})}}
+              onChangeMode={this.changeMode}
+              id={this.state.id}
             />
           </article>
         </section>

@@ -15,7 +15,7 @@ class SignIn extends Component {
                     }).then((res)=>{
                         if(res.status===200) { // 로그인 성공
                             console.log(res.status,res.data);
-                            this.props.onSignIn(res.data.id);
+                            this.props.onSignIn(res.data.id, res.data.nickname);
                         } else if(res.status===412) { // 로그인 실패
                             console.log(res.status,res.data);
                         }
@@ -31,7 +31,7 @@ class SignIn extends Component {
                     <input type="password" name="password" placeholder="Password"></input>
                 </p>
                 <p>
-                    <input type="submit"></input>
+                    <input type="submit" value="Sign in!"></input>
                 </p>
             </form>
         </div>

@@ -33,7 +33,7 @@ class SignUp extends Component {
                     <input type="password" name="password" placeholder="Password"></input>
                 </p>
                 <p>
-                    <input type="submit"></input>
+                    <input type="submit" value="Sign up!"></input>
                 </p>
             </form>
         </div>

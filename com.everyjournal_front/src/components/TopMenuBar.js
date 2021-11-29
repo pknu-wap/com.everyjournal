@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './TopMenuBar.css';
+import axios from 'axios';
 
 function TopMenuBtn (props) {
     return (
@@ -46,8 +47,13 @@ class TopMenuBar extends Component {
                   if(res.status===200){
                     this.props.onChangeMode('sign out');
                   } else {
+                    this.props.onChangeMode('sign out');
                     this.props.onChangeMode('error');
                   }
+                })
+                .catch((err)=> { 
+                  this.props.onChangeMode('sign out');
+                  this.props.onChangeMode('error');
                 });
                 }}
             />
