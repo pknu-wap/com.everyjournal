@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import CreatePastJournal from './journal/CreatePastJournal';
 
 import CreateTargetJournal from './journal/CreateTargetJournal';
+import HomeJournals from './journal/HomeJournals';
 
 class HomeContent extends Component {
     getHomeContent() {
@@ -28,7 +29,10 @@ class HomeContent extends Component {
           case 'home':
           default:
             return(
-              <div>home home</div>
+              <HomeJournals
+              id={this.props.id}
+              onError={this.props.onError}
+              />
             );
         }
     }
