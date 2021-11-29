@@ -4,13 +4,13 @@ import './JournalForm.css';
 
 const axios = require('axios');
 
-class CreateTargetJournal extends Component {
+class CreatePastJournal extends Component {
     render() {
         return(
-        <div className="CreateTargetJournal">
+        <div className="CreatePastJournal">
             <div>
                 <h1>
-                    목표 일지 작성
+                    과거 일지 작성
                 </h1>
             </div>
             <form action="/"
@@ -19,26 +19,33 @@ class CreateTargetJournal extends Component {
                     if(e.target.task.value!==""&&
                     e.target.category!==""&&
                     e.target.publicOrPrivate!==""&&
-                    e.target.targetDate!==""){
+                    e.target.targetDate!==""&&
+                    e.target.completeOrNot!==""){
                     console.log({
                         owner: this.props.id,
                         task: e.target.task.value,
                         describe: e.target.describe.value,
                         category: e.target.category.value,
                         publicOrPrivate: e.target.publicOrPrivate.value,
+                        reps: e.target.reps,
+                        time: e.target.time,
                         targetReps: e.target.targetReps.value,
                         targetTime: e.target.targetTime.value*60,
-                        targetDate: e.target.targetDate.value
+                        targetDate: e.target.targetDate.value,
+                        completeOrNot: e.target.completeOrNot.value
                     });
-                    axios.post('/api/journal/target/'+this.props.id,{
+                    axios.post('/api/journal/past/'+this.props.id,{
                         owner: this.props.id,
                         task: e.target.task.value,
                         describe: e.target.describe.value,
                         category: e.target.category.value,
                         publicOrPrivate: e.target.publicOrPrivate.value,
+                        reps: e.target.reps,
+                        time: e.target.time,
                         targetReps: e.target.targetReps.value,
                         targetTime: e.target.targetTime.value*60,
-                        targetDate: e.target.targetDate.value
+                        targetDate: e.target.targetDate.value,
+                        completeOrNot: e.target.completeOrNot.value
                     }).then((res)=>{
                         if(res.status===200) { // 작성 성공
                             console.log(res.status);
@@ -79,16 +86,28 @@ class CreateTargetJournal extends Component {
                     <label htmlFor="비공개"className="journal_form_label">비공개</label>
                 </p>
                 <p>
-                    <input name="targetReps" type='number' placeholder="목표 횟수" min="0"></input>
+                    <input name="targetReps" type='number' placeholder="목표했던 횟수"></input>
                 </p>
                 <p>
-                    <input name="targetTime" type='number' placeholder="목표 시간(분)" min="0"></input>
+                    <input name="targetTime" type='number' placeholder="목표했던 시간"></input>
                 </p>
                 <p>
-                    <input name="targetDate" type='date' placeholder="목표 날짜"></input>
+                    <input name="Reps" type='number' placeholder="실제 완료한 횟수" min="0"></input>
                 </p>
                 <p>
-                    <input type="submit" value="Goal!"></input>
+                    <input name="Time" type='number' placeholder="실제 완료한 시간(분)" min="0"></input>
+                </p>
+                <p>
+                    <input name="targetDate" type='date' placeholder="목표했던 날짜"></input>
+                </p>
+                <p>
+                    <input id="완료"type="radio"  name="completeOrNot" value={true} />
+                    <label htmlFor="완료"className="journal_form_label">완료</label>
+                    <input id="실패"type="radio"  name="completeOrNot" value={false}/>
+                    <label htmlFor="실패"className="journal_form_label">실패</label>
+                </p>
+                <p>
+                    <input type="submit" value="Record it!"></input>
                 </p>
             </form>
         </div>
@@ -96,4 +115,4 @@ class CreateTargetJournal extends Component {
     }
 }
 
-export default CreateTargetJournal;
+export default CreatePastJournal;

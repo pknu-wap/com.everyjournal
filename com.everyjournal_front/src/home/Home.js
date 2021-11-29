@@ -48,6 +48,8 @@ class Home extends Component {
             <HomeContent
             mode={this.state.mode}
             onError={this.props.onError}
+            onChangeMode={this.changeMod}
+            id={this.props.id}
             />
         </div>
         );

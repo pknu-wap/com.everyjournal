@@ -39,7 +39,10 @@ class Content extends Component {
           case 'home':
           default:
             return(
-                <Home></Home>
+                <Home 
+                id={this.props.id}
+                onError={()=>this.props.onChangeMode('error')}
+                />
               );
           // 에러 화면
           case 'error':
