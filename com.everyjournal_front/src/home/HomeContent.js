@@ -3,6 +3,7 @@ import CreatePastJournal from './journal/CreatePastJournal';
 
 import CreateTargetJournal from './journal/CreateTargetJournal';
 import HomeJournals from './journal/HomeJournals';
+import Stat from './stat/Stat';
 
 class HomeContent extends Component {
     getHomeContent() {
@@ -25,6 +26,10 @@ class HomeContent extends Component {
               onError={this.props.onError}
               id={this.props.id}
               />
+            );
+          case 'stat':
+            return(
+              <Stat></Stat>
             );
           case 'home':
           default:

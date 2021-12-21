@@ -17,7 +17,7 @@ class Home extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          //home, create target, create past,
+          //home, create target, create past, stat
           mode: 'home',
         }
         this.changeMode = this.changeMod.bind(this);
@@ -43,6 +43,10 @@ class Home extends Component {
             <HomeBtn
             name="과거 일지"
             onClick={()=>this.changeMod('create past')}
+            />
+            <HomeBtn
+            name="통계"
+            onClick={()=>this.changeMod('stat')}
             />
             </p>
             <HomeContent
