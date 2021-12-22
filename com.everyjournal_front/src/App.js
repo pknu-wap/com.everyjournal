@@ -39,7 +39,8 @@ class App extends Component {
     }
     let tmp_arr = []
     for(let i = 0; i < 7;i++) {
-      tmp_arr = tmp_arr.concat(tmp_tg);
+      tmp_tg.id= i;
+      tmp_arr = tmp_arr.concat(JSON.parse(JSON.stringify(tmp_tg)));
     }
     this.state.targetJournals = tmp_arr;
   }
