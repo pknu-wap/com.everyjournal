@@ -54,6 +54,9 @@ class Home extends Component {
             onError={this.props.onError}
             onChangeMode={this.changeMod}
             id={this.props.id}
+            getJournals={this.props.getJournals}
+            targetJournals={this.props.targetJournals}
+            pastJournals={this.props.pastJournals}
             />
         </div>
         );

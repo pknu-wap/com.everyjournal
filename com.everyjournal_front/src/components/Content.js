@@ -42,6 +42,9 @@ class Content extends Component {
                 <Home 
                 id={this.props.id}
                 onError={()=>this.props.onChangeMode('error')}
+                targetJournals={this.props.targetJournals}
+                pastJournals={this.props.pastJournals}
+                getJournals={this.props.getJournals}
                 />
               );
           // 에러 화면

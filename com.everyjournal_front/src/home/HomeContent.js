@@ -37,6 +37,9 @@ class HomeContent extends Component {
               <HomeJournals
               id={this.props.id}
               onError={this.props.onError}
+              getJournals={this.props.getJournals}
+              targetJournals={this.props.targetJournals}
+              pastJournals={this.props.pastJournals}
               />
             );
         }
