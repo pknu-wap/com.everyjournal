@@ -109,10 +109,10 @@ function Modal(props){
 			<div className="modal-top">
 				<p>{ props.year + "년" + (props.month+1) + "월" + props.selectedDate + "일" }</p>
 					<div className="modal-context">
-						<p>{props.journals[props.journalsIndex].category}</p>
-						<p>{props.journals[props.journalsIndex].currentReps}</p>
-						<p>{props.journals[props.journalsIndex].task}</p>
-						<p>{props.journals[props.journalsIndex].targetReps}</p>
+						<p>카테고리:{props.journals[props.journalsIndex].category}</p>
+						<p>완료한 횟수:{props.journals[props.journalsIndex].currentReps}</p>
+						<p>task:{props.journals[props.journalsIndex].task}</p>
+						<p>목표횟수:{props.journals[props.journalsIndex].targetReps}</p>
 					</div>
 				<input type="button" value="닫기" onClick={()=>{props.modal변경(false)}}></input>
 			</div>
@@ -122,7 +122,6 @@ function Modal(props){
 }
 
 function Marking(props){
-
 	for(let k=0; k<props.journals.length ; k++){
 		if(Date.parse(props.journals[k].targetDate)===Date.parse(props.year+'-'+(props.month+1)+'-'+ props.a)){
 			return(
@@ -133,9 +132,7 @@ function Marking(props){
 			);
 		}
 	}
-	return(
-		<></>
-	);
+	return null;
 }
 
 

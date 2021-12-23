@@ -31,7 +31,7 @@ import axios from 'axios';
 // }
 
 function Stat(props){
-		let [통계,통계변경] = useState([
+		let [stat,stat변경] = useState([
 			{
 				date: "2021-12-22",
 				category: "운동",
@@ -41,12 +41,20 @@ function Stat(props){
 				total_time: "전체 수행 시간",
 				number_of_participants: "참여자 수",
 				number_of_completes: "완료자 수",
-			}
+			},
 		]);
 
     return(
         <>
-					<input type="button" value="axios테스트" onClick={()=>{
+					<div>
+						<p>날짜 : {stat[0].date}</p>
+						<p>카테고리 : {stat[0].category}</p>
+						<p>최대 반복 수 : {stat[0].most_reps}</p>
+						<p>최대 수행 시간 : {stat[0].most_time}</p>
+						<p>전체 반복 수 : {stat[0].total_reps}</p>
+						<p>전체 수행 시간 : {stat[0].total_time}</p>
+					</div>
+					<input type="button" value="Update!!" onClick={()=>{
 						axios.get('https://codingapple1.github.io/shop/data2.json')
 						.then((result)=>{
 							console.log(result.data);
@@ -54,9 +62,9 @@ function Stat(props){
 						.catch(()=>{
 
 						})}
-					}>
+					}/>
 					
-					</input>
+					
         </>
     )
 }

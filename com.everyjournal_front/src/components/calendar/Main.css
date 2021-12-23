@@ -55,6 +55,12 @@
 .main-container{
     width: 70vw;
 }
+.modal-top{
+    border : 2px solid #FFFFFF;
+    border-radius: 25px;
+    margin-top:15px;
+    padding-bottom:26.747px;
+}
 .modal-context{
     display:flex;
     justify-content: space-around;
