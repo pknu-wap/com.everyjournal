@@ -45,7 +45,15 @@ class App extends Component {
     this.state.targetJournals = tmp_arr;
   }
 
-  get_Journals() {
+  get_Journals(id) {
+    console.log('!DSD!',id);
+    if(id !== undefined) { // #test
+      const arr = Array.from(this.state.targetJournals);
+      let idx= arr.findIndex(obj=>obj.id === id);
+      arr[idx].currentReps++;
+      this.setState({targetJournals: arr});
+      return;
+    }
     axios.get('/api/journal/target/'+this.props.id)
         .then((res)=>{
             this.setState({targetJournals:res.data});

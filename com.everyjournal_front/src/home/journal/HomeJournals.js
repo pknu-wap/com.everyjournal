@@ -1,3 +1,4 @@
+import { render } from '@testing-library/react';
 import React, { Component } from 'react';
 
 import './journals.css';
@@ -9,7 +10,7 @@ class HomeJournals extends Component {
         super(props);
     }
     
-    onDelete(id) {
+    onDelete(id) { // 각 일지 삭제 버튼
         //e.preventDefault();
         console.log('DeleteTargetJournal:',id);
         axios.delete(`api/journal/target/${id}`)
@@ -25,6 +26,24 @@ class HomeJournals extends Component {
             console.log(err);
             this.props.onError();
         });
+    }
+
+    onUp(id) { // 각 일지 count up 버튼
+        //e.preventDefault();
+        console.log('CountUpJournal:',id);
+        axios.put(`/api/journal/target/${id}/cur_reps/add`)
+        .then((res)=>{
+            if(res.status===200) { // 작성 성공
+                console.log(res.status);
+                this.props.getJournals();
+            } else if(res.status===412) { // 작성 실패
+                console.log(res.status,res.data);
+                this.props.onError();
+            }
+        }).catch((err)=>{
+            console.log(err);
+            //this.props.onError(); // #test
+        }).finally(()=>{this.props.getJournals(id)}); //#test
     }
 
     render() {
@@ -50,7 +69,7 @@ class HomeJournals extends Component {
                 <div>
                 목표 반복 횟수{tj.targetReps}
                 현재 반복 횟수:{tj.currentReps}
-                <input type='button' value={'UP!'}/>
+                <input type='button' value={'UP!'} onClick={function(e){this.onUp(tj.id)}.bind(this)} />
                 </div>
                 <div>
                 목표 수행 시간{tj.targetTime}
