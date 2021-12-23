@@ -85,7 +85,7 @@ class CreateTargetJournal extends Component {
                     <input name="targetTime" type='number' placeholder="목표 시간(분)" min="0"></input>
                 </p>
                 <p>
-                    <input name="targetDate" type='date' placeholder="목표 날짜"></input>
+                    <input name="targetDate" type='date' placeholder="목표 날짜" ></input>
                 </p>
                 <p>
                     <input type="submit" value="Goal!"></input>

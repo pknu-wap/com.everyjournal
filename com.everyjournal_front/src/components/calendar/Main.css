@@ -17,7 +17,7 @@
     box-sizing: border-box;
     width: calc(100% / 7);
     text-align: right;
-    padding: 0px;
+    padding-right: 9px;
     border-left: 1px solid #333333;
     border-bottom: 1px solid #333333;
 }
@@ -54,4 +54,9 @@
 
 .main-container{
     width: 70vw;
+}
+.modal-context{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap:wrap;
 }
