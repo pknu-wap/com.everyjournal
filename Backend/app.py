@@ -73,7 +73,8 @@ def withdraw():
 def login():
     user_imf = request.json
     id = user_imf['id']
-    pw = user_imf['pw']
+    pw = user_imf['pw'] 
+    nickname = user_imf['nickname']
     
     sql_1="SELECT mno, id, pw, ninkname FROM Member WHERE id=%s "
     cur.execute(sql_1, (id))   
@@ -83,7 +84,8 @@ def login():
         for i in rs1:
          if id == i[1] and pw == i[2]:
             session['id'] = id
-            return jsonify({"result" : id}), 200
+            session['nickname'] = nickname
+            return jsonify({"result_id" : id},{"result_nick" : nickname}),  200
          else:
             return jsonify({"result" : "ERROR"}), 412
     except:
