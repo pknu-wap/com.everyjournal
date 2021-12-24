@@ -85,19 +85,17 @@ function Main(props){
 						const today_condition = drawToday(condition,a);
 							return(
 									<div className="date" key={a,i} onClick={()=>{selectedDate변경(a); modal변경(true); findJournalIndex(Date.parse(props.year+'-'+(props.month+1)+'-'+a))}}>
-										{
-											//Date.parse(props.journals[0].targetDate)===Date.parse(props.year+'-'+(props.month+1)+'-'+a)&&<Marking/>
-											<Marking journals={props.journals} year={props.year} month={props.month} a={a} /> 
-										}
+										
+										{/* Date.parse(props.journals[0].targetDate)===Date.parse(props.year+'-'+(props.month+1)+'-'+a)&&<Marking/> */}
+										<Marking journals={props.journals} year={props.year} month={props.month} a={a} /> 
+										
 										<span className={condition +' '+ today_condition}>{a}</span>
 									</div>
 							)
 						})
 					}
 				</div>
-				{
 					<Modal modal={modal} modal변경={modal변경} selectedDate={selectedDate} year={props.year} month={props.month} journals={props.journals} journalsIndex={journalsIndex}/>
-				}
 			</div>	
     );
 }
@@ -113,12 +111,28 @@ function Modal(props){
 						<p>완료한 횟수:{props.journals[props.journalsIndex].currentReps}</p>
 						<p>task:{props.journals[props.journalsIndex].task}</p>
 						<p>목표횟수:{props.journals[props.journalsIndex].targetReps}</p>
+						<ProgressBar current={props.journals[props.journalsIndex].currentReps} target={props.journals[props.journalsIndex].targetReps} />
 					</div>
 				<input type="button" value="닫기" onClick={()=>{props.modal변경(false)}}></input>
 			</div>
 		);
 	}
 	return null;
+}
+function ProgressBar(props){
+	let [progress,progress변경] = useState(0);
+	let width = 60;
+
+	useEffect(()=>{
+		progress변경((props.current/props.target)*width);
+	})
+	
+	return(
+		<div className="progress-div" style={{width : `${width}vw`}}>
+			<div className="progress" style={{width : `${progress}vw`}}>
+			</div>
+		</div>
+	);
 }
 
 function Marking(props){

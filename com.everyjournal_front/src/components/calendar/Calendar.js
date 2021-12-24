@@ -1,4 +1,4 @@
-import React, { useState }  from 'react';
+import React, { useState, useEffect }  from 'react';
 import './Calendar.css';
 import Header from './Header';
 import Main from './Main';
@@ -35,7 +35,7 @@ function Calendar(props){
 			category: "공부",
 			currentReps: "2",
 			currentTime: "수행한 시간",
-			targetReps: "1",
+			targetReps: "10",
 			targetTime: "목표 수행 시간",
 			targetDate: "2021-12-20",
 			completeOrNot: true,
@@ -50,7 +50,7 @@ function Calendar(props){
 			category: "독서",
 			currentReps: "3",
 			currentTime: "수행한 시간",
-			targetReps: "1",
+			targetReps: "4",
 			targetTime: "목표 수행 시간",
 			targetDate: "2021-12-19",
 			completeOrNot: true,
@@ -63,9 +63,9 @@ function Calendar(props){
 			task: "턱걸이 20개",
 			describe: "턱걸이",
 			category: "운동",
-			currentReps: "완료한 횟수",
+			currentReps: "7",
 			currentTime: "수행한 시간",
-			targetReps: "목표 반복 횟수",
+			targetReps: "14",
 			targetTime: "목표 수행 시간",
 			targetDate: "2021-11-11",
 			completeOrNot: true,
