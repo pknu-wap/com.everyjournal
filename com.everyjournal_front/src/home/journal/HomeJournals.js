@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import React, { Component } from 'react';
+import JournalClock from './JournalClock';
 
 import './journals.css';
 
@@ -8,6 +9,9 @@ const axios = require('axios');
 class HomeJournals extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            targetJournals: [],
+        }
     }
     
     onDelete(id) { // 각 일지 삭제 버튼
@@ -25,7 +29,7 @@ class HomeJournals extends Component {
         }).catch((err)=>{
             console.log(err);
             this.props.onError();
-        });
+        }).finally(()=>{this.props.getJournals(id)});
     }
 
     onUp(id) { // 각 일지 count up 버튼
@@ -43,14 +47,23 @@ class HomeJournals extends Component {
         }).catch((err)=>{
             console.log(err);
             //this.props.onError(); // #test
-        }).finally(()=>{this.props.getJournals(id)}); //#test
+        }).finally(()=>{this.props.getJournals(id)});
+    }
+
+    onStart(id) {
+
+    }
+
+    onStop(id) {
+
     }
 
     render() {
         this.props.getJournals();
+        this.state.targetJournals = this.props.targetJournals;
         const journalList = [];
        // let arr = this.props.targetJournals.from();
-        this.props.targetJournals.map((tj)=>{
+        this.state.targetJournals.map((tj)=>{
             journalList.push(
                 <div className="target_journals" data-id={tj.id}>
                     <div className="basic_info">
@@ -71,12 +84,11 @@ class HomeJournals extends Component {
                 현재 반복 횟수:{tj.currentReps}
                 <input type='button' value={'UP!'} onClick={function(e){this.onUp(tj.id)}.bind(this)} />
                 </div>
-                <div>
-                목표 수행 시간{tj.targetTime}
-                현재 수행 시간:{tj.currentTime}
-                <input type='button' value={'Start!'}/>
-                <input type='button' value={'Stop!'}/>
-                </div>
+                <JournalClock 
+                id={tj.id} 
+                targetTime={tj.targetTime} 
+                currentTime={tj.currentTime} 
+                />
                 </div>)
         });
         return(

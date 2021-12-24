@@ -47,7 +47,7 @@ class App extends Component {
 
   get_Journals(id) {
     console.log('!DSD!',id);
-    if(id !== undefined) { // #test
+    if(id !== undefined) { // #test for count up
       const arr = Array.from(this.state.targetJournals);
       let idx= arr.findIndex(obj=>obj.id === id);
       arr[idx].currentReps++;

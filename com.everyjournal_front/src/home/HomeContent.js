@@ -29,7 +29,9 @@ class HomeContent extends Component {
             );
           case 'stat':
             return(
-              <Stat></Stat>
+              <Stat
+              targetJournals={this.props.targetJournals}
+              />
             );
           case 'home':
           default:
