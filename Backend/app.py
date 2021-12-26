@@ -1,18 +1,15 @@
-from flask import Flask, render_template, request, session, jsonify
+from flask import Flask, send_from_directory, render_template, request, session, jsonify
 import pymysql
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='', static_folder = 'com.everyjournal_front/public')
 app.secret_key = b'secret/'
 
 db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
 cur = db.cursor()
 
-@app.route("/")
-def start():
-    no = -1
-    if "uno" in session:
-        no = session["uno"]
-    return render_template('main.html', value=no)
+@app.route("/", defaults={'path' : ''})
+def start(path):
+    return send_from_directory(app.static_folder, 'index.html')
 # 회원가입
 @app.route("/api/auth/join", methods=['POST'])
 def join():
@@ -20,13 +17,6 @@ def join():
     id = new_user['id']
     pw = new_user['pw']
     nickname = new_user['nickname']
-
-    #
-    sql = "SELECT wno, date, str FROM What"
-    cur.execute(sql)
-    rs = cur.fetchall()
-    print(rs[0])
-
 
     sql_2="SELECT * FROM Member"
     cur.execute(sql_2)
@@ -83,8 +73,7 @@ def withdraw():
 def login():
     user_imf = request.json
     id = user_imf['id']
-    pw = user_imf['pw'] 
-    nickname = user_imf['nickname']
+    pw = user_imf['pw']
     
     sql_1="SELECT mno, id, pw, nickname FROM Member WHERE id=%s "
     cur.execute(sql_1, (id))   
@@ -94,8 +83,7 @@ def login():
         for i in rs1:
          if id == i[1] and pw == i[2]:
             session['id'] = id
-            session['nickname'] = nickname
-            return jsonify({"result_id" : id},{"result_nick" : nickname}),  200
+            return jsonify({"result" : id}), 200
          else:
             return jsonify({"result" : "ERROR"}), 412
     except:
