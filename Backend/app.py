@@ -1,7 +1,7 @@
 from flask import Flask, send_from_directory, render_template, request, session, jsonify
 import pymysql
 
-app = Flask(__name__, static_url_path='', static_folder = 'com.everyjournal_front/public')
+app = Flask(__name__, static_url_path='', static_folder = '../com.everyjournal_front/public')
 app.secret_key = b'secret/'
 
 db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
