@@ -93,6 +93,53 @@ def login():
 def logout():
     session.clear()
     return jsonify({"result" : "logout"}), 200
+
+# 목표일지 작성
+@app.route("api/journal/target/:id", methods = ['POST'])
+def write_targetdiary():
+    get_json = request.get_json()
+    owner = get_json['id']
+    task = get_json['task']
+    describe = get_json['describe']
+    category = get_json['category']
+    publicOrprivate = get_json['publicOrprivate']
+    private = get_json['private']
+    targetReps = get_json['targetReps']
+    targetTime = get_json['targetTime']
+    targetDate = get_json['targetDate']
+
+    if not owner or not task or not describe or not category or not publicOrprivate or not private or not targetDate or not targetReps or not targetTime:
+        return jsonify({"result" : "ERROR"}), 412
+    else:
+        sql = "INSERT INTO TARGETDIARY (owner, task, describe, category, publicOrprivate, private, targetReps, targetTime, targetDate) VALUES (%s, %s, %s, %s, %s, %d, %d, %s)"
+        values = (owner, task, describe, category, publicOrprivate, private, targetReps, targetTime, targetDate)
+        cur.execute(sql, values)
+        db.commit()
+        return 200
+
+# 과거일지 작성
+@app.route("api/journal/past/:id", methods = ['POST'])
+def write_pastdiary():
+    get_json = request.get_json()
+    owner = get_json['id']
+    task = get_json['task']
+    describe = get_json['describe']
+    category = get_json['category']
+    publicOrprivate = get_json['publicOrprivate']
+    reps = get_json['reps']
+    time = get_json['time']
+    targetReps = get_json['targetReps']
+    targetTime = get_json['targetTime']
+    targetDate = get_json['targetDate']
+    completeOrNot = get_json['completeOrNot']
+    if not owner or not task or not describe or not category or not publicOrprivate or not reps or not time or not targetDate or not targetReps or not targetTime or not completeOrNot:
+        return jsonify({"result" : "ERROR"}), 412
+    else:
+        sql = "INSERT INTO PASTDIARY (owner, task, describe, category, publicOrprivate, reps, time, targetReps, targetTime, targetDate, completeOrNot) VALUES (%s, %s, %s, %s, %s, %d, %d, %d, %d, %s, %s)"
+        values = (owner, task, describe, category, publicOrprivate, reps, time, targetReps, targetTime, targetDate, completeOrNot)
+        cur.execute(sql, values)
+        db.commit()
+        return 200
     
 #일지 서버->클라이언트
 @app.route('/api/journal/<type>/<id>', methods=['GET'])
