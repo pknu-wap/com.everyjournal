@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import HomeContent from './HomeContent';
 import './Home.css';
+import Calendar from '../components/calendar/Calendar'
 
 function HomeBtn (props) {
     return (
@@ -31,24 +32,34 @@ class Home extends Component {
     render() {
         return(
         <div>
-            <p>
+        <Calendar
+            mode={this.state.mode}
+            journals={this.state.targetJournals}
+        />
+        &nbsp;
+            <div>
             <HomeBtn
+            className="HomeBtn"
             name="일지 보기"
             onClick={()=>this.changeMod('home')}
             />
             <HomeBtn
+            className="HomeBtn"
             name="목표 일지"
             onClick={()=>this.changeMod('create target')}
             />
             <HomeBtn
+            className="HomeBtn"
             name="과거 일지"
             onClick={()=>this.changeMod('create past')}
             />
             <HomeBtn
+            className="HomeBtn"
             name="통계"
             onClick={()=>this.changeMod('stat')}
             />
-            </p>
+            </div>
+            &nbsp;
             <HomeContent
             mode={this.state.mode}
             onError={this.props.onError}

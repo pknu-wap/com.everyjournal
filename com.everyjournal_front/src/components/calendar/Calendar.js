@@ -74,13 +74,12 @@ function Calendar(props){
 	]);
 
 	let [diary, setDiary] = useState(false);
-	
+	if(props.mode==='stat') return <div></div>;
+	else{
 	if(diary===true){
     return(
 			<div className="top">
-				<p>
-					<input type="button" value="Diary" onClick={()=>{setDiary(!diary)}}/>
-				</p>
+					<input className="CalBtn" type="button" value="Calendar" onClick={()=>{setDiary(!diary)}}/>
 				<div className="calender">
 					<Header year={year} year변경={year변경} month={month} month변경={month변경} /> 
 					<Main year={year}  month={month} totalDate={totalDate} totalDate변경={totalDate변경} journals={journals}/>
@@ -90,11 +89,10 @@ function Calendar(props){
 	} else {
 		return (
 			<div className="Top">
-				<p>
-					<input type="button" value="Diary" onClick={()=>setDiary(!diary)}/>
-				</p>
+					<input className="CalBtn" type="button" value="Calendar" onClick={()=>setDiary(!diary)}/>
 			</div>
 		);
+	}
 	}
 }
 

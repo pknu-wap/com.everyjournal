@@ -1,0 +1,11 @@
+.HomeBtn{
+    background-color:deepskyblue;
+    height: 100%;
+    font-size: 1em;
+    color:darkblue;
+    border: solid 0.1em aquamarine;
+}
+
+.HomeBtn:hover {
+    background-color: darkturquoise;
+  }

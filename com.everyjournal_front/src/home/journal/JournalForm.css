@@ -1,2 +1,5 @@
-.journal_form__label{
+.CreateJournal {
+    background-color: rgba(97, 170, 237, 0.5);
+    border: solid 5px;
+    border-radius: 100px;
 }

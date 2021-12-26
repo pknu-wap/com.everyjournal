@@ -7,7 +7,7 @@ const axios = require('axios');
 class CreatePastJournal extends Component {
     render() {
         return(
-        <div className="CreatePastJournal">
+        <div className="CreateJournal">
             <div>
                 <h1>
                     과거 일지 작성

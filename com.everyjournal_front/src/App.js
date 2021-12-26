@@ -3,7 +3,6 @@ import './App.css';
 
 import TopMenuBar from './components/TopMenuBar';
 import Content from './components/Content';
-import Calendar from './components/calendar/Calendar';
 
 const axios = require('axios');
 
@@ -46,7 +45,6 @@ class App extends Component {
   }
 
   get_Journals(id) {
-    console.log('!DSD!',id);
     if(id !== undefined) { // #test for count up
       const arr = Array.from(this.state.targetJournals);
       let idx= arr.findIndex(obj=>obj.id === id);
@@ -88,13 +86,6 @@ class App extends Component {
           />
         </header>
         <section>
-          <header>
-            <div>
-            </div>
-            <Calendar
-            journals={this.state.targetJournals}
-            />
-          </header>
           <article>
             <Content
               mode={this.state.mode}
