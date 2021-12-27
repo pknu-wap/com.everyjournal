@@ -95,7 +95,7 @@ def logout():
     return jsonify({"result" : "logout"}), 200
 
 # 목표일지 작성
-@app.route("api/journal/target/:id", methods = ['POST'])
+@app.route("/api/journal/target/:id", methods = ['POST'])
 def write_targetdiary():
     get_json = request.get_json()
     owner = get_json['id']
@@ -118,7 +118,7 @@ def write_targetdiary():
         return 200
 
 # 과거일지 작성
-@app.route("api/journal/past/:id", methods = ['POST'])
+@app.route("/api/journal/past/:id", methods = ['POST'])
 def write_pastdiary():
     get_json = request.get_json()
     owner = get_json['id']
