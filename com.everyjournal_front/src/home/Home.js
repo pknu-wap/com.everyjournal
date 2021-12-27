@@ -44,16 +44,19 @@ class Home extends Component {
             name="일지 보기"
             onClick={()=>this.changeMod('home')}
             />
+            &nbsp;
             <HomeBtn
             className="HomeBtn"
             name="목표 일지"
             onClick={()=>this.changeMod('create target')}
             />
+            &nbsp;
             <HomeBtn
             className="HomeBtn"
             name="과거 일지"
             onClick={()=>this.changeMod('create past')}
             />
+            &nbsp;
             <HomeBtn
             className="HomeBtn"
             name="통계"

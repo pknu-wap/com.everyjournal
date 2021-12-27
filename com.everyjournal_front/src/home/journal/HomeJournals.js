@@ -50,14 +50,6 @@ class HomeJournals extends Component {
         }).finally(()=>{this.props.getJournals(id)});
     }
 
-    onStart(id) {
-
-    }
-
-    onStop(id) {
-
-    }
-
     render() {
         this.props.getJournals();
         this.state.targetJournals = this.props.targetJournals;

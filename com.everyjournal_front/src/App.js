@@ -13,7 +13,7 @@ class App extends Component {
       //home, sign in, sign up, error
       mode: 'home',
       id: 'test', // #test
-      nickname: 'test',
+      nickname: 'test123',
       targetJournals: [],
       pastJournals: []
     }
@@ -82,7 +82,7 @@ class App extends Component {
         <header className="App-header">
           <TopMenuBar
             onChangeMode={this.changeMode}
-            id={this.state.id}
+            nickname={this.state.nickname}
           />
         </header>
         <section>

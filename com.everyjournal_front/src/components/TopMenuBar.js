@@ -57,6 +57,14 @@ class TopMenuBar extends Component {
                 });
                 }}
             />
+            <span style={{position:'absolute'}}>
+              &nbsp;
+              <span style={{color:'rgb(255,240,50)', border:'solid 0.15em rgba(255,220,10,0.5)', backgroundColor:'rgba(255,255,255,0.1', borderRadius:'0.2em'}}>
+              <b>
+              {this.props.nickname}
+              </b>
+              </span>
+            </span>
         </div>
       );
     }

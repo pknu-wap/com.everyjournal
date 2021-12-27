@@ -4,3 +4,13 @@
     border-radius: 0.5em;
     background-color: rgba(221, 215, 129, 0.76);
 }
+
+.timerBtn{
+    border-radius: 0.5em;
+    color: whitesmoke;
+    font-weight: bold;
+    background-color: rgba(240, 57, 57, 0.76);
+}
+.timerBtn:hover{
+    background-color: rgba(243, 156, 75, 0.76);
+}
