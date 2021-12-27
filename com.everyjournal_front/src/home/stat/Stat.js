@@ -29,7 +29,7 @@ import { useEffect } from 'react';
 //     }
 // }
 function Stat(props){
-		let [stat,stat변경] = useState([
+		const [stat,stat변경] = useState([
 			{
 				date: "2021-12-22",
 				category: "운동",
@@ -82,22 +82,20 @@ function Stat(props){
 			},
 		]);
 		
-		let[공부,공부변경] = useState([]);
-		let[운동,운동변경] = useState([]);
-		let[악기,악기변경] = useState([]);
-		let[기타,기타변경] = useState([]);
-	
-		let i=0;
+		const[공부,공부변경] = useState([]);
+		const[운동,운동변경] = useState([]);
+		const[악기,악기변경] = useState([]); 
+		const[기타,기타변경] = useState([]);
+		
 
 		function Division(){
-			
 			stat.map((e)=>{
 				switch(e.category){
 					case '공부' :
 					공부변경([...공부,e]);
 					break;
 					case '운동' : 
-					운동변경([...운동,e]);
+					운동변경(운동=>([...운동,e]));
 					break;
 					case '악기' : 
 					악기변경([...악기,e]);
@@ -107,18 +105,22 @@ function Stat(props){
 					break;
 				}
 			});
-	
-			return;
 		}
 
 		useEffect(()=>{
 				Division()
 			}
 		,[stat]);
+
+		useEffect(()=> {
+
+		},[운동]);
+
 		
     return(
         <>
 					<div>
+						{console.log(stat)}
 						{console.log(운동)}
 					</div>
 
