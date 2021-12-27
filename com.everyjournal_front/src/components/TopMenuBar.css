@@ -9,10 +9,12 @@
     border-right: solid 0.1em aquamarine;
     border-radius: 0 0 1em 1em;
     padding-top: 0.2em;
+    transition: 0.5s;
 }
 
 .TopMenuBtn:hover {
     background-color: darkturquoise;
+    transition: 0.2;
   }
 
 .TopMenuBar {

@@ -4,8 +4,10 @@
     font-size: 1em;
     color:darkblue;
     border: solid 0.1em aquamarine;
+    transition: 0.5s;
 }
 
 .HomeBtn:hover {
     background-color: darkturquoise;
+    transition: 0.2s;
   }

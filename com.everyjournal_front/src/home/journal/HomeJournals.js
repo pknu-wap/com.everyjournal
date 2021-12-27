@@ -67,22 +67,28 @@ class HomeJournals extends Component {
             journalList.push(
                 <div className="target_journals" data-id={tj.id}>
                     <div className="basic_info">
-                        {tj.nickname}
-                        {tj.category}
-                        {tj.targetDate}
+                        <div className='jn_title'>{tj.task}</div>
+                        <div className='jn_info'>
+                        <span className="jn_cate">{tj.category}</span>
+                        <span className="jn_date">
+                            <div>목표 날짜</div>
+                            <div>{tj.targetDate}</div>
+                        </span>
                         {tj.completeOrNot}
                         {tj.expired}
-                    <input type='button' value={'Delete'}
-                    onClick={function(e){this.onDelete(tj.id)}.bind(this)}
-                    data-id={tj.id}
-                />
+                        <span className="jn_nick"><b>{tj.nickname}</b></span>
+                        <input type='button' value={'Delete'}
+                        onClick={function(e){this.onDelete(tj.id)}.bind(this)}
+                        data-id={tj.id}
+                        className='jn_del'
+                        />
+                        </div>
                 </div>
-                <div>{tj.task}</div>
-                <div>{tj.describe}</div>
+                <div className='jn_desc'>{tj.describe}</div>
                 <div>
-                목표 반복 횟수{tj.targetReps}
-                현재 반복 횟수:{tj.currentReps}
-                <input type='button' value={'UP!'} onClick={function(e){this.onUp(tj.id)}.bind(this)} />
+                <span className='jn_treps'>목표 횟수{tj.targetReps}</span>
+                <span className='jn_creps'>현재 횟수:{tj.currentReps}</span>
+                <input className='jn_up' type='button' value={'UP!'} onClick={function(e){this.onUp(tj.id)}.bind(this)} />
                 </div>
                 <JournalClock 
                 id={tj.id} 

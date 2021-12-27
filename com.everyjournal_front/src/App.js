@@ -24,15 +24,15 @@ class App extends Component {
     const tmp_tg = {
       id: 3,
       owner: "test1",
-      nickname: "nick",
-      task: "목표의 제목",
+      nickname: "nick123nfffasgasgfa",
+      task: "목표 제목",
       describe: "목표에 관한 설명",
-      category: "운동/공부 등 미리 정해진 카테고리",
+      category: "카테고리",
       currentReps: 2,
       currentTime: 0,
       targetReps: 20,
       targetTime: 0,
-      targetDate: "목표 날짜",
+      targetDate: "2021-12-31",
       completeOrNot: false,
       expired: false
     }
@@ -100,8 +100,9 @@ class App extends Component {
           </article>
         </section>
         <footer>
+          &nbsp;
           <div className="footer">
-          footer
+          &nbsp;
           </div>
         </footer>
       </div>
