@@ -86,8 +86,8 @@ class HomeJournals extends Component {
                 </div>
                 <div className='jn_desc'>{tj.describe}</div>
                 <div>
-                <span className='jn_treps'>목표 횟수{tj.targetReps}</span>
-                <span className='jn_creps'>현재 횟수:{tj.currentReps}</span>
+                <span className='jn_reps'>목표 : {tj.targetReps}회</span>&nbsp;
+                <span className='jn_reps'>현재 : {tj.currentReps}회</span>&nbsp;
                 <input className='jn_up' type='button' value={'UP!'} onClick={function(e){this.onUp(tj.id)}.bind(this)} />
                 </div>
                 <JournalClock 

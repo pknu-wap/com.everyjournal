@@ -1,18 +1,21 @@
 
 import axios from 'axios';
 import React, { Component } from 'react';
+import './jnClock.css';
 
 class JournalClock extends Component {
     constructor(props) {
         super(props);
         this.state={
-            curTime: this.props.currentTime
+            curTime: this.props.currentTime,
+            targetTime: this.props.targetTime
         }
         this.timer = null;
     }
 
     render() {
         let curTimeStr = '';
+        let tarTimeStr = '';
         if(this.state.curTime>=60) {
             curTimeStr += parseInt(this.state.curTime/60) + ':';
             if(this.state.curTime%60 < 10) curTimeStr += '0' + this.state.curTime%60;
@@ -22,11 +25,24 @@ class JournalClock extends Component {
             if(this.state.curTime%60 < 10) curTimeStr += '0' + this.state.curTime%60;
             else curTimeStr += this.state.curTime%60;
         }
+        if(this.state.targetTime>=60) {
+            tarTimeStr += parseInt(this.state.targetTime/60) + ':';
+            if(this.state.targetTime%60 < 10) tarTimeStr += '0' + this.state.targetTime%60;
+            else tarTimeStr += this.state.targetTime%60;
+        } else {
+            tarTimeStr += '00:';
+            if(this.state.targetTime%60 < 10) tarTimeStr += '0' + this.state.targetTime%60;
+            else tarTimeStr += this.state.targetTime%60;
+        }
 
     return(
-        <div>
-            목표 수행 시간{this.props.targetTime}
-            현재 수행 시간{curTimeStr}
+        <div className='timer'>
+            <span className='time'>
+            목표 수행 시간
+            </span>{tarTimeStr} &nbsp;
+            <span className='time'>
+            현재 수행 시간
+            </span>{curTimeStr}
             <input type='button' value={'Start!'} 
             onClick={(e)=>{
                 if(this.timer===null) {

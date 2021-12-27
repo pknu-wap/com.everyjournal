@@ -91,22 +91,22 @@ function Stat(props){
 
 		function Division(){
 			
-			for(i;i<stat.length;i++){
-				switch(stat[i].category){
+			stat.map((e)=>{
+				switch(e.category){
 					case '공부' :
-					공부변경([...공부,stat[i]]);
+					공부변경([...공부,e]);
 					break;
 					case '운동' : 
-					운동변경([...운동,stat[i]]);
+					운동변경([...운동,e]);
 					break;
 					case '악기' : 
-					악기변경([...악기,stat[i]]);
+					악기변경([...악기,e]);
 					break;
 					case '기타' : 
-					기타변경([...기타,stat[i]]);
+					기타변경([...기타,e]);
 					break;
 				}
-			}
+			});
 	
 			return;
 		}

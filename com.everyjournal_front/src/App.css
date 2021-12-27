@@ -52,4 +52,7 @@
   background-color: rgba(31, 154, 255, 0.828);
   padding-left: 100px;
   width: 100vw;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
 }
