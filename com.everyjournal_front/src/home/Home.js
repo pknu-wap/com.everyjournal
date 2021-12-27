@@ -20,6 +20,7 @@ class Home extends Component {
         this.state = {
           //home, create target, create past, stat
           mode: 'home',
+					
         }
         this.changeMode = this.changeMod.bind(this);
     }

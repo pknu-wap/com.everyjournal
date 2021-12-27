@@ -10,16 +10,20 @@
     display: flex;
     flex-flow: row wrap;
     height: 500px;
-    border-top: 1px solid #333333;
-    border-right: 1px solid #333333;
+    border-top: 2px solid #333333;
+    border-right: 2px solid #333333;
 }	
 .date{
     box-sizing: border-box;
     width: calc(100% / 7);
     text-align: right;
     padding-right: 9px;
-    border-left: 1px solid #333333;
-    border-bottom: 1px solid #333333;
+    border-left: 2px solid #333333;
+    border-bottom: 2px solid #333333;
+    cursor:pointer;
+}
+.date:hover{
+    background-color: rgba(71, 255, 194, 0.486);
 }
 .days :nth-child(7n),
 .dates div:nth-child(7n){
@@ -56,7 +60,7 @@
     width: 70vw;
 }
 .modal-top{
-    border : 2px solid #FFFFFF;
+    border : 3px solid #FFFFFF;
     border-radius: 25px;
     margin-top:15px;
     padding-bottom:26.747px;
@@ -71,7 +75,7 @@
     border-radius: .5rem;
 }
 .progress{
-    background-color: rgb(62,122,235);
+    background-color: rgb(71, 255, 194);
     height:10px;
     border-radius: 1rem;
     max-width:60vw;
