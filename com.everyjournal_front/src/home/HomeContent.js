@@ -35,7 +35,7 @@ class HomeContent extends Component {
             );
           case 'home':
           default:
-            return(
+            return( 
               <HomeJournals
               id={this.props.id}
               onError={this.props.onError}
