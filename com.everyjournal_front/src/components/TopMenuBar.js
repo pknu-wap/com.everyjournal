@@ -15,7 +15,7 @@ function TopMenuBtn (props) {
 
 class TopMenuBar extends Component {
   render() {
-    if(this.props.id===null){
+    if(this.props.nickname===null){
     return ( // 비로그인
       <div className="TopMenuBar">
           <TopMenuBtn 

@@ -14,9 +14,9 @@ class SignUp extends Component {
                         password: e.target.password.value
                     }).then((res)=>{
                         if(res.status===200) { // 가입 성공
-                            console.log(res.status,res.data);
+                            alert('가입 성공!!');
                         } else if(res.status===412) { // 가입 실패
-                            console.log(res.status,res.data);
+                            alert('가입 실패!!');
                         }
                     }).catch((err)=>{
                         console.log(err);

@@ -12,14 +12,15 @@ class App extends Component {
     this.state = {
       //home, sign in, sign up, error
       mode: 'home',
-      id: 'test', // #test
-      nickname: 'test123',
+      id: null,
+      nickname: null,
       targetJournals: [],
       pastJournals: []
-    }
+    };
     this.changeMode = this.changeMod.bind(this);
     this.getJournals = this.get_Journals.bind(this);
 
+    /*
     this.state.targetJournals = [ // #test
       { // 목표 일지의 경우
       target: true,
@@ -82,31 +83,36 @@ class App extends Component {
         expired: true,
       },
     ];
+  */
   }
 
-  get_Journals(id) {
+  get_Journals() {
+    /*
     if(id !== undefined) { // #test for count up
       const arr = Array.from(this.state.targetJournals);
       let idx= arr.findIndex(obj=>obj.id === id);
       arr[idx].currentReps++;
       this.setState({targetJournals: arr});
       return;
-    }
+    }*/
     axios.get('/api/journal/target/'+this.props.id)
         .then((res)=>{
+            let tmp = Array.from(res.data).map((e)=>{
+              e.target=true;
+            });
             this.setState({targetJournals:res.data});
         })
         .catch((err)=>{
-            //console.error(err); #test
-            //this.props.onError();
+            console.error(err); 
+            this.props.onError();
         });
         axios.get('/api/journal/past/'+this.props.id)
         .then((res)=>{
             this.setState({pastJournals:res.data});
         })
         .catch((err)=>{
-            //console.error(err); #test
-            //this.props.onError();
+            console.error(err);
+            this.props.onError();
         });
   }
 

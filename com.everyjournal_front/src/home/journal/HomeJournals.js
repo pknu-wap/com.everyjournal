@@ -59,7 +59,9 @@ class HomeJournals extends Component {
             if(tj.expired===false) {
             journalList.push(
                 <div className="target_journals" data-id={tj.id}>
-                    <div className="basic_info">
+                    <div className="basic_info"
+                     style={tj.completeOrNot?{backgroundColor:'rgba(55,200,55,0.8)'}:{}}
+                     >
                         <div className='jn_title'>{tj.task}</div>
                         <div className='jn_info'>
                         <span className="jn_cate"><b>{tj.category}</b></span>
@@ -92,7 +94,9 @@ class HomeJournals extends Component {
             } else {
                 journalList.push(
                     <div className="target_journals" data-id={tj.id}>
-                        <div className="basic_info">
+                        <div className="basic_info" 
+                        style={tj.completeOrNot?{backgroundColor:'rgba(55,255,55,0.8)'}:{}}
+                        >
                             <div className='jn_title' style={{backgroundColor:'rgba(255, 55, 55, 0.8)'}}>{tj.task}</div>
                             <div className='jn_info'>
                             <span className="jn_cate"><b>{tj.category}</b></span>
