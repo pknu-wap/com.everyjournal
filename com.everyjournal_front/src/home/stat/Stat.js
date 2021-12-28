@@ -2,38 +2,12 @@ import React, { Component,useState } from 'react';
 import axios from 'axios';
 import { useEffect } from 'react';
 
-// class Stat extends Component {
-//     constructor(props) {
-//         super(props);
-//         this.state = {
-//         }
-//     }
-
-//     render() {
-//         // 아래 메소드로 백엔드와 상의해서 통계 내용 받아와서 렌더링에 사용
-//         axios.get('/라우터 주소')
-//         .then((res)=>{
-//             // res.data에 서버가 보낸 내용 들어있음.
-//         })
-//         .catch((err)=>{
-//             //console.error(err); 테스트용 주석
-//             //this.props.onError();
-//         });
-//         return(
-//         <div className="Stat">
-//             <div>
-//                 Statistics Here
-//             </div>
-//         </div>
-//         );
-//     }
-// }
 function Stat(props){
 		const [stat,stat변경] = useState([
 			{
 				date: "2021-12-22",
 				category: "운동",
-				most_reps: "10",
+				most_reps: "15",
 				most_time: "2",
 				total_reps: "10",
 				total_time: "3",
@@ -92,16 +66,16 @@ function Stat(props){
 			stat.map((e)=>{
 				switch(e.category){
 					case '공부' :
-					공부변경([...공부,e]);
+					공부변경(운동=>([...운동,e]));
 					break;
 					case '운동' : 
 					운동변경(운동=>([...운동,e]));
 					break;
 					case '악기' : 
-					악기변경([...악기,e]);
+					악기변경(악기=>([...악기,e]));
 					break;
 					case '기타' : 
-					기타변경([...기타,e]);
+					기타변경(기타=>([...기타,e]));
 					break;
 				}
 			});
@@ -112,29 +86,48 @@ function Stat(props){
 			}
 		,[stat]);
 
-		useEffect(()=> {
-
-		},[운동]);
-
-		
+	
     return(
-        <>
+        <div>
 					<div>
-						{console.log(stat)}
-						{console.log(운동)}
+						<p>공부</p>
+						{/* <CalcStat category={공부}/> */}
 					</div>
-
-					{/* <input type="button" value="Update!!" onClick={()=>{
-						axios.get('https://codingapple1.github.io/shop/data2.json')
-						.then((result)=>{
-							console.log(result.data);
-						})
-						.catch(()=>{
-
-						})}
-					}/> */}
-        </>
+					<div>
+						<p>운동</p>
+						{/* <CalcStat category={운동}/> */}
+						{console.log(운동[0].date) }
+						{console.log(운동[0]['date'])}
+					</div>
+					<div>
+						<p>악기</p>
+						{/* <CalcStat category={악기}/> */}
+					</div>
+					<div>
+						<p>기타</p>
+						{/* <CalcStat category={기타}/> */}
+					</div>
+        </div>
     )
+}
+function CalcStat(props){
+
+	return(
+		<div>
+			<div>
+				평균 최대 반복수 : {}
+			</div>
+			<div>
+				평균 최대 수행시간 : {}
+			</div>
+			<div>
+				평균 전체 반복수 : {}
+			</div>
+			<div>
+				평균 전체 수행시간 : {}
+			</div>
+		</div>
+	);
 }
 
 export default Stat;

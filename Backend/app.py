@@ -131,7 +131,7 @@ def write_targetdiary():
     if not owner or not task or not describe or not category or not publicOrprivate or not private or not targetDate or not targetReps or not targetTime:
         return jsonify({"result" : "ERROR"}), 412
     else:
-        sql = "INSERT INTO TARGETDIARY (owner, task, describe, category, publicOrprivate, private, targetReps, targetTime, targetDate) VALUES (%s, %s, %s, %s, %s, %d, %d, %s)"
+        sql = "INSERT INTO Aim (owner, task, describe, category, publicOrprivate, private, targetReps, targetTime, targetDate) VALUES (%s, %s, %s, %s, %s, %d, %d, %s)"
         values = (owner, task, describe, category, publicOrprivate, private, targetReps, targetTime, targetDate)
         cur.execute(sql, values)
         db.commit()
@@ -159,7 +159,7 @@ def write_pastdiary():
     if not owner or not task or not describe or not category or not publicOrprivate or not reps or not time or not targetDate or not targetReps or not targetTime or not completeOrNot:
         return jsonify({"result" : "ERROR"}), 412
     else:
-        sql = "INSERT INTO PASTDIARY (owner, task, describe, category, publicOrprivate, reps, time, targetReps, targetTime, targetDate, completeOrNot) VALUES (%s, %s, %s, %s, %s, %d, %d, %d, %d, %s, %s)"
+        sql = "INSERT INTO Past (owner, task, describe, category, publicOrprivate, reps, time, targetReps, targetTime, targetDate, completeOrNot) VALUES (%s, %s, %s, %s, %s, %d, %d, %d, %d, %s, %s)"
         values = (owner, task, describe, category, publicOrprivate, reps, time, targetReps, targetTime, targetDate, completeOrNot)
         cur.execute(sql, values)
         db.commit()
