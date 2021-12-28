@@ -8,7 +8,7 @@ const axios = require('axios');
 
 class App extends Component {
   constructor(props) {
-    super(props);
+    super(props); ;;
     this.state = {
       //home, sign in, sign up, error
       mode: 'home',
