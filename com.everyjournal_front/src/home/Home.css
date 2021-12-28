@@ -1,11 +1,12 @@
 .HomeBtn{
-    background-color:deepskyblue;
+    background-color:rgba(42, 250, 129, 0.828);
     height: 100%;
     font-size: 1em;
     color:darkblue;
     border: solid 0.1em aquamarine;
     transition: 0.5s;
-}
+    border-radius: 0.5em;
+} 
 
 .HomeBtn:hover {
     background-color: darkturquoise;

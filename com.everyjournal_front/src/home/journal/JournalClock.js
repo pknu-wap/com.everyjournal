@@ -44,6 +44,7 @@ class JournalClock extends Component {
             현재 수행 시간
             </span>{curTimeStr}
             <input type='button' value={'Start!'} 
+            className='timerBtn'
             onClick={(e)=>{
                 if(this.timer===null) {
                     this.timer = setInterval(()=>{
@@ -52,6 +53,7 @@ class JournalClock extends Component {
                 }
             }}/>
             <input type='button' value={'Stop!'}
+            className='timerBtn'
             onClick={(e)=>{
                 clearInterval(this.timer);
                 this.timer = null;
@@ -67,7 +69,7 @@ class JournalClock extends Component {
                 })
                 .catch((err)=>{
                     console.log(err);
-                    //this.props.onError(); // #test
+                    this.props.onError(); 
                 });
             }}/>
         </div>

@@ -7,41 +7,81 @@ import Content from './components/Content';
 const axios = require('axios');
 
 class App extends Component {
-  constructor(props) {
+  constructor(props) { 234;
     super(props);
     this.state = {
       //home, sign in, sign up, error
       mode: 'home',
       id: 'test', // #test
-      nickname: 'test',
+      nickname: 'test123',
       targetJournals: [],
       pastJournals: []
     }
     this.changeMode = this.changeMod.bind(this);
     this.getJournals = this.get_Journals.bind(this);
 
-    // 프론트 테스트용 #test
-    const tmp_tg = {
+    this.state.targetJournals = [ // #test
+      { // 목표 일지의 경우
+      target: true,
       id: 3,
-      owner: "test1",
-      nickname: "nick123nfffasgasgfa",
-      task: "목표 제목",
-      describe: "목표에 관한 설명",
-      category: "카테고리",
-      currentReps: 2,
+      owner: "일지 주인",
+      task: "턱걸이 20개",
+      describe: "턱걸이",
+      category: "운동",
+      currentReps: 5,
       currentTime: 0,
-      targetReps: 20,
-      targetTime: 0,
-      targetDate: "2021-12-31",
-      completeOrNot: false,
-      expired: false
-    }
-    let tmp_arr = []
-    for(let i = 0; i < 7;i++) {
-      tmp_tg.id= i;
-      tmp_arr = tmp_arr.concat(JSON.parse(JSON.stringify(tmp_tg)));
-    }
-    this.state.targetJournals = tmp_arr;
+      targetReps: 15,
+      targetTime: 3600,
+      targetDate: "2021-12-23",
+      completeOrNot: true,
+      expired: true,
+      },
+      { // 목표 일지의 경우
+        target: true,
+        id: 2,
+        owner: "일지 주인",
+        task: "데이터베이스 1회독",
+        describe: "데이터베이스",
+        category: "공부",
+        currentReps: 2,
+        currentTime: 0,
+        targetReps: 10,
+        targetTime: 0,
+        targetDate: "2021-12-20",
+        completeOrNot: true,
+        expired: true,
+      },
+      { // 목표 일지의 경우
+        target: true,
+        id: 1,
+        owner: "일지 주인",
+        task: "독서 1주 1권",
+        describe: "어린왕자",
+        category: "독서",
+        currentReps: 3,
+        currentTime: 0,
+        targetReps: 4,
+        targetTime: 0,
+        targetDate: "2021-12-19",
+        completeOrNot: true,
+        expired: true,
+      },
+      { // 목표 일지의 경우
+        target: true,
+        id: 0,
+        owner: "일지 주인",
+        task: "턱걸이 20개",
+        describe: "턱걸이",
+        category: "운동",
+        currentReps: 7,
+        currentTime: 0,
+        targetReps: 20,
+        targetTime: 0,
+        targetDate: "2021-11-11",
+        completeOrNot: true,
+        expired: true,
+      },
+    ];
   }
 
   get_Journals(id) {
@@ -82,7 +122,7 @@ class App extends Component {
         <header className="App-header">
           <TopMenuBar
             onChangeMode={this.changeMode}
-            id={this.state.id}
+            nickname={this.state.nickname}
           />
         </header>
         <section>
