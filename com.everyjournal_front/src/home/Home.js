@@ -35,7 +35,7 @@ class Home extends Component {
         <div>
         <Calendar
             mode={this.state.mode}
-            journals={this.state.targetJournals}
+            journals={this.props.targetJournals}
         />
         &nbsp;
             <div>
