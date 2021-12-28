@@ -7,7 +7,7 @@ import Content from './components/Content';
 const axios = require('axios');
 
 class App extends Component {
-  constructor(props) { 234;
+  constructor(props) { 
     super(props);
     this.state = {
       //home, sign in, sign up, error
