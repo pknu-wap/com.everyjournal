@@ -7,7 +7,11 @@ import Content from './components/Content';
 const axios = require('axios');
 
 class App extends Component {
+<<<<<<< HEAD
   constructor(props) { 
+=======
+  constructor(props) {
+>>>>>>> 628b1f85880f11c953419ae8bf29c186b0827bb6
     super(props);
     this.state = {
       //home, sign in, sign up, error
@@ -33,8 +37,8 @@ class App extends Component {
       targetReps: 15,
       targetTime: 3600,
       targetDate: "2021-12-23",
-      completeOrNot: true,
-      expired: true,
+      completeOrNot: false,
+      expired: false,
       },
       { // 목표 일지의 경우
         target: true,
@@ -48,8 +52,8 @@ class App extends Component {
         targetReps: 10,
         targetTime: 0,
         targetDate: "2021-12-20",
-        completeOrNot: true,
-        expired: true,
+        completeOrNot: false,
+        expired: false,
       },
       { // 목표 일지의 경우
         target: true,
@@ -64,7 +68,7 @@ class App extends Component {
         targetTime: 0,
         targetDate: "2021-12-19",
         completeOrNot: true,
-        expired: true,
+        expired: false,
       },
       { // 목표 일지의 경우
         target: true,
@@ -78,7 +82,7 @@ class App extends Component {
         targetReps: 20,
         targetTime: 0,
         targetDate: "2021-11-11",
-        completeOrNot: true,
+        completeOrNot: false,
         expired: true,
       },
     ];
