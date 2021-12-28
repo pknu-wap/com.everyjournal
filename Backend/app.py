@@ -1,18 +1,18 @@
 from flask import Flask, send_from_directory, render_template, request, session, jsonify
 import pymysql
 
-app = Flask(__name__, static_url_path='', static_folder = '../com.everyjournal_front/public')
+app = Flask(__name__, static_url_path='', static_folder = 'Backend/build')
 app.secret_key = b'secret/'
 
 db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
 cur = db.cursor()
 
-@app.route("/", defaults={'path' : ''})
-def start(path):
-    return send_from_directory(app.static_folder, 'index.html')
 # 회원가입
 @app.route("/api/auth/join", methods=['POST'])
 def join():
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     new_user = request.json
     id = new_user['id']
     pw = new_user['pw']
@@ -35,14 +35,20 @@ def join():
         sql_3="INSERT INTO Member (id, pw, nickname) VALUES(%s, %s, %s)"
         cur.execute(sql_3, (id, pw, nickname))
         db.commit()
+        db.close()
         data = {"id" : id}
         return jsonify(data), 200
+    
+    
 
     
         
 # 회원탈퇴
 @app.route("/api/auth/withdraw", methods=['POST'])
 def withdraw():
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     drop_user = request.json
     id = drop_user['id']
     pw = drop_user['pw']
@@ -61,6 +67,7 @@ def withdraw():
         sql_2 = "DELETE FROM Member WHERE id = %s"
         cur.execute(sql_2, (id))
         db.commit()
+        db.close()
         data = {"result":"end"}
         return jsonify(data)
     else:
@@ -71,6 +78,9 @@ def withdraw():
  
 @app.route('/api/auth/login', methods = ['POST'])
 def login():
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     user_imf = request.json
     id = user_imf['id']
     pw = user_imf['pw']
@@ -90,15 +100,23 @@ def login():
             return jsonify({"result" : "ERROR"}), 412
     except:
         return jsonify({"result" : "ERROR"}), 412
+    
+    db.close()
 
 @app.route('/api/auth/logout', methods = ['GET'])
 def logout():
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+    db.close()
     session.clear()
     return jsonify({"result" : "logout"}), 200
 
 # 목표일지 작성
 @app.route("/api/journal/target/:id", methods = ['POST'])
 def write_targetdiary():
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     get_json = request.get_json()
     owner = get_json['id']
     task = get_json['task']
@@ -117,11 +135,15 @@ def write_targetdiary():
         values = (owner, task, describe, category, publicOrprivate, private, targetReps, targetTime, targetDate)
         cur.execute(sql, values)
         db.commit()
+        db.close()
         return 200
 
 # 과거일지 작성
 @app.route("/api/journal/past/:id", methods = ['POST'])
 def write_pastdiary():
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     get_json = request.get_json()
     owner = get_json['id']
     task = get_json['task']
@@ -141,11 +163,15 @@ def write_pastdiary():
         values = (owner, task, describe, category, publicOrprivate, reps, time, targetReps, targetTime, targetDate, completeOrNot)
         cur.execute(sql, values)
         db.commit()
+        db.close()
         return 200
     
 #일지 서버->클라이언트
 @app.route('/api/journal/<type>/<id>', methods=['GET'])
 def gived(type, id):
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     if type == 'target':
         sql_1= "SELECT nickname FROM Member WHERE id = %s"
         cur.execute(sql_1, id)
@@ -277,10 +303,15 @@ def gived(type, id):
                      'completeOrNot' : completeOrNot
                      }
         return jsonify(test_data)
+    
+    db.close()
 
 #일지 삭제
 @app.route("/api/auth/journal/<type>/<id>", methods=['POST'])
 def delete(type, id):
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     if type == 'target':
         sql = "SELECT owner FROM Aim WHERE ano = %d"
         cur.execute(sql, id)
@@ -305,10 +336,14 @@ def delete(type, id):
         else:
             return jsonify({"result" : "error"}), 412
 
+    db.close()
 
 #target_reps plus 1
 @app.route("/api/journal/target/<id>/cur_reps/add", methods=['PUT'])        
 def plus(id):
+    db = pymysql.connect(host='', port=, user='', passwd='', db='', charset='utf8')
+    cur = db.cursor()
+
     ano = id
     sql_1 = "SELECT target_reps FROM Aim WHERE ano = %s"
     cur.execute(sql_1, ano)
@@ -318,9 +353,14 @@ def plus(id):
     sql_2 = "UPDATE Aim SET target_reps = %s WEHRE ano = %s"
     cur.execute(sql_2, (num, ano))
     db.commit()
+    db.close()
 
     return jsonify()   
 
 if __name__ == "__main__":
     app.debug = True
     app.run()
+
+@app.route("/", defaults={'path' : ''})
+def start(path):
+    return send_from_directory(app.static_folder, 'index.html')
